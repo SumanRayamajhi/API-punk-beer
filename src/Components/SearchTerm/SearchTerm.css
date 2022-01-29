@@ -1,0 +1,26 @@
+.SearchTerm_Main {
+  height: 60px;
+  width: 350px;
+  margin-top: 1rem;
+}
+
+.SearchTerm_Main form {
+  display: flex;
+  background: #fff;
+  border-radius: 15px;
+}
+.SearchTerm_Main input {
+  height: 2rem;
+  width: 100%;
+  border: none;
+  background-color: #fff;
+  font-size: 18px;
+  padding: 0px 60px 0px 20px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.SearchTerm_Main button {
+  border: none;
+  width: 2rem;
+  background: #fff;
+}

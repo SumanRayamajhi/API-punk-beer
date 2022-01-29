@@ -1,0 +1,40 @@
+.NavBar_Main {
+  height: 10vh;
+  font-family: "Roboto", sans-serif;
+}
+.NavBar_Container {
+  padding: 0rem 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.NavBar_Branch {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+.NavBar_Branch a {
+  text-decoration: none;
+}
+.NavBar_Title {
+  font-size: 1.9rem;
+}
+.Nav-favourite {
+  font-size: 1.9rem;
+}
+.Nav-favourite span {
+  position: absolute;
+  background-color: yellow;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 10px;
+  color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .NavBar_Branch {
+    display: none;
+  }
+}

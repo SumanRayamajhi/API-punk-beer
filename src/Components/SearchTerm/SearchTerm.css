@@ -3,6 +3,10 @@
   width: 350px;
   margin-top: 1rem;
 }
+.SearchTerm_Body {
+  border: none;
+  outline: none;
+}
 
 .SearchTerm_Main form {
   display: flex;

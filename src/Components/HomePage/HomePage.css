@@ -1,0 +1,29 @@
+.HomePage_container {
+  margin-bottom: 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.HomePage_body {
+  display: flex;
+  border-radius: 50px;
+}
+.HomePage {
+  margin: 20px auto;
+  padding: 13px;
+  -webkit-box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+  -moz-box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+  box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+}
+
+@media only screen and (max-width: 768px) {
+  .HomePage_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 425px) {
+  .HomePage_container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+}

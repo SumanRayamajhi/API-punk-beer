@@ -7,7 +7,7 @@ const NavBar = ({ favourites }) => {
   return (
     <nav className="NavBar_Main">
       <div className="NavBar_Container">
-        <h1 className="NavBar_Title">Beens Love Beers</h1>
+        <h1 className="NavBar_Title">Punk Beer Api</h1>
         <div className="NavBar_Branch">
           <Link to="/" type="submit">
             <Home />

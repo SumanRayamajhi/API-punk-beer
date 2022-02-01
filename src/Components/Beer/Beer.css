@@ -1,0 +1,54 @@
+.Beer_image {
+  height: 10rem;
+  width: 4rem;
+}
+
+.Beer_body {
+  display: flex;
+  flex-direction: column;
+}
+
+.each-card {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border-radius: 15px;
+  padding: 13px;
+  -webkit-box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+  -moz-box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+  box-shadow: 5px 6px 17px 5px rgba(124, 134, 139, 0.75);
+  margin: 20px auto;
+}
+
+.image {
+  height: 18rem;
+  width: 18rem;
+  margin-right: 1rem;
+}
+.text {
+  margin-top: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 15rem;
+}
+.heading-star {
+  display: flex;
+  justify-content: space-around;
+}
+
+.BeerList_CardBody {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.Beer_star {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .BeersList_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

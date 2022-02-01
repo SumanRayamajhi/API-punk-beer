@@ -1,17 +1,16 @@
 import React from "react";
+import Beer from "../Beer/Beer.js";
 
-function FavouritesPage({ BeersList, favourites, removeFavouritesClick }) {
-  {
-    /* <div style={{ cursor: "pointer" }}>⭐</div> */
-  }
+function FavouritesPage({ beers, onFavouriteRemove }) {
   return (
-    <div className="BeersList_container">
+    <div className="Beer_container">
       <h1>Favourite Beers</h1>
       <div className="row">
-        {favourites.map((beer) => (
-          <BeersList
+        {beers.map((beer) => (
+          <Beer
+            key={beer.id}
             beer={beer}
-            removeFavouritesClick={removeFavouritesClick}
+            onFavouriteRemove={onFavouriteRemove}
           />
         ))}
       </div>

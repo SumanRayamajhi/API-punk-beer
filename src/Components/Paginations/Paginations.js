@@ -17,20 +17,26 @@ function Paginations({
 
   const previousButton =
     currentPage > 1 ? (
-      <button className="btn btn-primary" onClick={() => onButtonClick("prev")}>
-        Previous
+      <button
+        className="btn btn-primary button"
+        onClick={() => onButtonClick("prev")}
+      >
+        Prev
       </button>
     ) : (
-      <button className="btn btn-primary">Previous</button>
+      <button className="btn btn-primary button">Prev</button>
     );
 
   const nextButton =
     currentNumbersOfItems === showPerPage ? (
-      <button className="btn btn-primary" onClick={() => onButtonClick("next")}>
+      <button
+        className="btn btn-primary button"
+        onClick={() => onButtonClick("next")}
+      >
         Next
       </button>
     ) : (
-      <button className="btn btn-primary">Next</button>
+      <button className="btn btn-primary button">Next</button>
     );
 
   return (

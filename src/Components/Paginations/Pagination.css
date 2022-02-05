@@ -1,4 +1,23 @@
 .Paginations__CurrentPage {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0.8rem 1rem;
+  border: 1px solid rgb(20, 189, 173);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  color: rgb(20, 189, 173);
+}
+
+.button {
+  background-image: linear-gradient(
+    to right,
+    rgb(101, 201, 184),
+    rgb(20, 189, 173)
+  );
+  border: none;
+}
+
+.button:hover {
+  background: rgb(20, 189, 173);
+  border: none;
+  -webkit-box-shadow: 1px 1px 9px 9px #7e7d7d;
+  box-shadow: 1px 1px 9px 1px #7e7d7d;
 }

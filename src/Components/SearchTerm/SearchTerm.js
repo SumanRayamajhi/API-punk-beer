@@ -4,9 +4,9 @@ import "./SearchTerm.css";
 
 function SearchTerm({ search, searchHandler, getHandler }) {
   return (
-    <div className="SearchTerm_Main">
+    <div className="SearchTerm_Main ">
       <form onSubmit={getHandler}>
-        <div className="">
+        <div>
           <input
             className="SearchTerm_Body"
             type="text"

@@ -1,24 +1,29 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import Beer from "../Beer/Beer.js";
 import "./HomePage.css";
 
-function HomePage({ beers, onFavouriteAdd, onFavouriteRemove }) {
+function HomePage({
+  beers,
+  BeerDescription,
+  onFavouriteAdd,
+  onFavouriteRemove,
+}) {
   return (
-    <div className=" ">
-      <h1>List of Beers</h1>
-      <div className="row HomePage_container">
+    <Container className="HomePage_container">
+      <h2 className="HomePage_heading"> Punk Beers</h2>
+      <Row className="HomePage_row">
         {beers.map((beer) => (
-          <div className=" row HomePage_body">
-            <Beer
-              key={beer.id}
-              onFavouriteAdd={onFavouriteAdd}
-              onFavouriteRemove={onFavouriteRemove}
-              beer={beer}
-            />
-          </div>
+          <Beer
+            key={beer.id}
+            onFavouriteAdd={onFavouriteAdd}
+            onFavouriteRemove={onFavouriteRemove}
+            beer={beer}
+            BeerDescription={BeerDescription}
+          />
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
 

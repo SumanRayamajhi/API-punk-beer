@@ -1,11 +1,13 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import Beer from "../Beer/Beer.js";
+import "./FavouritesPage.css";
 
 function FavouritesPage({ beers, onFavouriteRemove }) {
   return (
-    <div className="Beer_container">
+    <Container className="FavouritesPage_container">
       <h1>Favourite Beers</h1>
-      <div className="row">
+      <Row className="FavouritesPage_row">
         {beers.map((beer) => (
           <Beer
             key={beer.id}
@@ -13,8 +15,8 @@ function FavouritesPage({ beers, onFavouriteRemove }) {
             onFavouriteRemove={onFavouriteRemove}
           />
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
 

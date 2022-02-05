@@ -1,39 +1,51 @@
 import React from "react";
+import { Button, Card } from "react-bootstrap";
 import "./Beer.css";
-import EmptyStar from "../EmptyStar/EmptyStar";
+import { BsStarFill } from "react-icons/bs";
+import { BsStar } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-function Beer({ beer, onFavouriteAdd, onFavouriteRemove }) {
+function Beer({ beer, onFavouriteAdd, onFavouriteRemove, BeerDescription }) {
   return (
-    <div className="row Beer_body">
-      <div className="card 3 each-card" style={{ width: "24rem" }}>
-        <div className="image">
-          <img
-            src={beer.image_url}
-            className="card-img-top Beer_image"
-            alt="..."
-          />
-        </div>
-
-        <div className="card-body Beer_body">
-          <div className="heading-star">
-            <h5 className="card-title">{beer.name}</h5>
-            {beer.isFavourite ? (
-              <div
-                className="Beer_star"
-                onClick={() => onFavouriteRemove(beer.id)}
-              >
-                ⭐
-              </div>
-            ) : (
-              <div onClick={() => onFavouriteAdd(beer.id)}>
-                <EmptyStar />
-              </div>
-            )}
-          </div>
-          <p className="card-text text">{beer.description}</p>
-        </div>
+    <Card style={{ width: "20rem" }} className="mt-3 beer_body">
+      <div className="beer-container">
+        <Card.Img
+          variant="top"
+          src={beer.image_url}
+          alt="..."
+          className="beer_image"
+        />
+        <Card className="border-0 beer_card_body">
+          <Card.Body>
+            <Card.Title className="beer_card_title">
+              {" "}
+              <h5>{beer.name}</h5>
+              {beer.isFavourite ? (
+                <div
+                  className="Beer_star"
+                  onClick={() => onFavouriteRemove(beer.id)}
+                >
+                  <BsStarFill className="Beer-filled-star" />
+                </div>
+              ) : (
+                <div onClick={() => onFavouriteAdd(beer.id)}>
+                  <BsStar
+                    className="Beer-empty-star"
+                    style={{ color: "rgb(20, 189, 173)" }}
+                  />
+                </div>
+              )}
+            </Card.Title>
+            <Card.Text className="beer_description">
+              {beer.description}
+            </Card.Text>
+          </Card.Body>
+          <Link to="/beer-descriptions" style={{ textDecoration: "none" }}>
+            <Button className="beer-learn-more">Learn More</Button>
+          </Link>
+        </Card>
       </div>
-    </div>
+    </Card>
   );
 }
 

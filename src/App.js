@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import HomePage from "./Components/HomePage/HomePage";
 import SearchTerm from "./Components/SearchTerm/SearchTerm";
-import NavBar from "./Components/NavBar/NavBar";
 import FavouritesPage from "./Components/FavouritesPage/FavouritesPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Paginations from "./Components/Paginations/Paginations";
-// import Paginations from "./Components/Paginations-new/Paginations-new";
+import NavBar from "./Components/NavBar/NavBar";
+import BeerDescription from "./Components/BeerDescription/BeerDescription";
 
 const findOutIfItIsFavourite = (beer, favouriteBeersIds) => {
   //list of ids from favouriteBeers
@@ -96,10 +96,14 @@ function App() {
 
   return (
     <Router>
-      <div className="App container-fluid movie-app">
-        <div>
-          <NavBar favourites={favouriteBeers} />
-          <SearchTerm search={search} searchHandler={searchHandler} />
+      <div className="movie-app">
+        <NavBar favourites={favouriteBeers} />
+        <div className="container App_container">
+          <SearchTerm
+            search={search}
+            searchHandler={searchHandler}
+            className="searchTerm"
+          />
           <Routes>
             <Route
               exact
@@ -111,6 +115,7 @@ function App() {
                       beers={beers}
                       onFavouriteAdd={handleFavouriteAdd}
                       onFavouriteRemove={handleFavouriteRemove}
+                      BeerDescription={BeerDescription}
                     />
                   </div>
                   <Paginations
@@ -141,6 +146,11 @@ function App() {
                   />
                 </div>
               }
+            ></Route>
+            <Route
+              exact
+              path="/beer-descriptions"
+              element={<BeerDescription beers={beers} />}
             ></Route>
           </Routes>
         </div>

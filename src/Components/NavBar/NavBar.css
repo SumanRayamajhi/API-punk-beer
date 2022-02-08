@@ -8,13 +8,25 @@
 .Nav-links {
   text-decoration: none;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.2px;
 }
+
+.nav-links-connect {
+  background: rgba(150, 211, 206, 0.4);
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 0.5px solid rgb(20, 189, 173);
+}
+
+.nav-links-connect:hover {
+  color: #000;
+}
+
 .Nav-Favourite {
-  margin-left: 1.5rem;
+  margin-left: 1.9rem;
 }
 .Nav-Favourite span {
   background-color: #fff;

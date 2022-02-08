@@ -5,9 +5,11 @@ import { BsStarFill } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function Beer({ beer, onFavouriteAdd, onFavouriteRemove, BeerDescription }) {
+function Beer({ beer, isFavourite, onFavouriteAdd, onFavouriteRemove }) {
+  let link = `/beer-descriptions/${beer.id}`;
+
   return (
-    <Card style={{ width: "20rem" }} className="mt-3 beer_body">
+    <Card className="mt-3 beer_body">
       <div className="beer-container">
         <Card.Img
           variant="top"
@@ -20,18 +22,21 @@ function Beer({ beer, onFavouriteAdd, onFavouriteRemove, BeerDescription }) {
             <Card.Title className="beer_card_title">
               {" "}
               <h5>{beer.name}</h5>
-              {beer.isFavourite ? (
+              {isFavourite ? (
                 <div
                   className="Beer_star"
                   onClick={() => onFavouriteRemove(beer.id)}
                 >
-                  <BsStarFill className="Beer-filled-star" />
+                  <BsStarFill
+                    className="Beer-filled-star"
+                    style={{ cursor: "pointer" }}
+                  />
                 </div>
               ) : (
                 <div onClick={() => onFavouriteAdd(beer.id)}>
                   <BsStar
+                    style={{ cursor: "pointer" }}
                     className="Beer-empty-star"
-                    style={{ color: "rgb(20, 189, 173)" }}
                   />
                 </div>
               )}
@@ -40,7 +45,7 @@ function Beer({ beer, onFavouriteAdd, onFavouriteRemove, BeerDescription }) {
               {beer.description}
             </Card.Text>
           </Card.Body>
-          <Link to="/beer-descriptions" style={{ textDecoration: "none" }}>
+          <Link to={link} style={{ textDecoration: "none" }}>
             <Button className="beer-learn-more">Learn More</Button>
           </Link>
         </Card>

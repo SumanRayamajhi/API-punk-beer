@@ -8,32 +8,21 @@ import Paginations from "./Components/Paginations/Paginations";
 import NavBar from "./Components/NavBar/NavBar";
 import BeerDescription from "./Components/BeerDescription/BeerDescription";
 
-const findOutIfItIsFavourite = (beer, favouriteBeersIds) => {
-  //list of ids from favouriteBeers
-
-  return favouriteBeersIds.includes(beer.id);
-};
-
-const markFavourites = (beers) => {
-  const beersFromLocalStorage = JSON.parse(
-    localStorage.getItem("punk-beer-favourite")
-  );
-  const favouriteBeers = beersFromLocalStorage || [];
-
-  const favouriteBeersIds = favouriteBeers.map((beer) => beer.id);
-
-  const beersWithDetails = beers.map((beer) => {
-    return {
-      ...beer,
-      isFavourite: findOutIfItIsFavourite(beer, favouriteBeersIds),
-    };
-  });
-
-  return beersWithDetails;
-};
-
 function App() {
   const [beers, setBeers] = useState([]);
+  const [favouriteBeers, setFavouriteBeers] = useState({});
+
+  useEffect(() => {
+    const beersFromLocalStorage = JSON.parse(
+      localStorage.getItem("punk-beer-favourite")
+    );
+    setFavouriteBeers(beersFromLocalStorage || {});
+  }, []);
+
+  useEffect(() => {
+    saveToLocalStorage(favouriteBeers);
+  }, [favouriteBeers]);
+
   const [search, setSearch] = useState("");
   const showPerPage = 6;
   const [pageNumber, setPageNumber] = useState(1);
@@ -50,9 +39,7 @@ function App() {
     const response = await fetch(url);
     const beers = await response.json();
 
-    const beersWithFavourites = markFavourites(beers);
-
-    setBeers(beersWithFavourites);
+    setBeers(beers);
   };
 
   const searchHandler = (e) => {
@@ -64,58 +51,58 @@ function App() {
     localStorage.setItem("punk-beer-favourite", JSON.stringify(items));
   };
 
-  const handleFavouriteAdd = (beerId) => {
-    const newBeers = beers.map((beer) => {
+  const getBeerId = (beerId) => {
+    for (let beer of beers) {
       if (beer.id === beerId) {
-        beer.isFavourite = true;
+        return beer;
       }
-      return beer;
-    });
-    setBeers(newBeers);
-    const newFavouriteBeers = newBeers.filter((beer) => beer.isFavourite);
-    saveToLocalStorage(newFavouriteBeers);
+    }
+    return null;
   };
 
+  const handleFavouriteAdd = (beerId) => {
+    console.log(beerId);
+    const favouriteBeer = getBeerId(beerId);
+    let newFavouriteBeeers = { ...favouriteBeers };
+    newFavouriteBeeers[favouriteBeer.id] = favouriteBeer;
+    setFavouriteBeers(newFavouriteBeeers);
+    console.log(favouriteBeer);
+  };
+
+  //remove element of object javascript - delete
+
   const handleFavouriteRemove = (beerId) => {
-    const newBeers = beers.map((beer) => {
-      if (beer.id === beerId) {
-        beer.isFavourite = false;
-      }
-      return beer;
-    });
-    setBeers(newBeers);
-    const newFavouriteBeers = newBeers.filter((beer) => beer.isFavourite);
-    saveToLocalStorage(newFavouriteBeers);
+    let newFavouriteBeeers = { ...favouriteBeers };
+    delete newFavouriteBeeers[beerId];
+    setFavouriteBeers(newFavouriteBeeers);
   };
 
   const paginationHandler = (newPageNumber) => {
     setPageNumber(newPageNumber);
   };
 
-  const favouriteBeers = beers.filter((beer) => beer.isFavourite);
-
   return (
     <Router>
       <div className="movie-app">
         <NavBar favourites={favouriteBeers} />
         <div className="container App_container">
-          <SearchTerm
-            search={search}
-            searchHandler={searchHandler}
-            className="searchTerm"
-          />
           <Routes>
             <Route
               exact
               path="/"
               element={
                 <div className="App_container">
+                  <SearchTerm
+                    search={search}
+                    searchHandler={searchHandler}
+                    className="searchTerm"
+                  />
                   <div className="App_card">
                     <HomePage
                       beers={beers}
+                      favouriteBeers={favouriteBeers}
                       onFavouriteAdd={handleFavouriteAdd}
                       onFavouriteRemove={handleFavouriteRemove}
-                      BeerDescription={BeerDescription}
                     />
                   </div>
                   <Paginations
@@ -132,24 +119,23 @@ function App() {
               path="/favourites"
               element={
                 <div className="App_container">
+                  <SearchTerm
+                    search={search}
+                    searchHandler={searchHandler}
+                    className="searchTerm"
+                  />
                   <div className="App_card">
                     <FavouritesPage
                       beers={favouriteBeers}
                       onFavouriteRemove={handleFavouriteRemove}
                     />
                   </div>
-                  <Paginations
-                    paginationHandler={paginationHandler}
-                    currentPage={pageNumber}
-                    currentNumbersOfItems={beers.length}
-                    showPerPage={showPerPage}
-                  />
                 </div>
               }
             ></Route>
             <Route
               exact
-              path="/beer-descriptions"
+              path="/beer-descriptions/:id"
               element={<BeerDescription beers={beers} />}
             ></Route>
           </Routes>

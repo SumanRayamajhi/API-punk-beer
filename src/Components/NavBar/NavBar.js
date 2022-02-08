@@ -23,7 +23,11 @@ function NavBar({ favourites }) {
           <Nav className="me-auto"></Nav>
           <Nav>
             <Nav.Link>
-              <Link to="/" type="submit" className="Nav-links">
+              <Link
+                to="/"
+                type="submit"
+                className="Nav-links nav-links-connect"
+              >
                 Home
               </Link>
             </Nav.Link>
@@ -31,9 +35,9 @@ function NavBar({ favourites }) {
               <Link
                 to="/favourites"
                 type="submit"
-                className="Nav-links Nav-Favourite"
+                className="Nav-links Nav-Favourite nav-links-connect"
               >
-                Favourites<span>{favourites.length}</span>
+                Favourites<span>{Object.keys(favourites).length}</span>
               </Link>
             </Nav.Link>
           </Nav>

@@ -1,0 +1,67 @@
+.BeerDescription_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px #000000;
+  box-shadow: 0px 0px 10px 0px #000000;
+  margin-top: 3rem;
+}
+
+.BeerDescription_title {
+  background: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.BeerDescription_image {
+  width: 7rem;
+  height: 18rem;
+  margin-top: 1rem;
+}
+
+.BeerDescription_description {
+  font-size: 1.1rem;
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.BeerDescription_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.BeerDescription_container h4 {
+  color: rgb(20, 189, 173);
+  font-weight: 600;
+  font-size: 2rem;
+  transform: translate(10%);
+}
+
+.BeerDescription_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.BeerDescription_content h5 {
+  font-weight: 600;
+}
+
+.BeerDescription_ingredients {
+  display: flex;
+}
+
+.BeerDescription_ingredient {
+  background: #fff;
+  margin: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  background: rgb(150, 211, 206);
+}

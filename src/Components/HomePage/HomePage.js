@@ -5,7 +5,7 @@ import "./HomePage.css";
 
 function HomePage({
   beers,
-  BeerDescription,
+  favouriteBeers,
   onFavouriteAdd,
   onFavouriteRemove,
 }) {
@@ -16,10 +16,10 @@ function HomePage({
         {beers.map((beer) => (
           <Beer
             key={beer.id}
+            isFavourite={favouriteBeers[beer.id] !== undefined}
             onFavouriteAdd={onFavouriteAdd}
             onFavouriteRemove={onFavouriteRemove}
             beer={beer}
-            BeerDescription={BeerDescription}
           />
         ))}
       </Row>
